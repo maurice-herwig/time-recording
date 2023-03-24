@@ -1,0 +1,36 @@
+turbo-frame#list_of_all_employees
+  h3 =t('employees')
+  = pager :admin_users_path
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th =t('avatar')
+        th =t('name')
+        - unless @mobile_mode
+          th =t('email')
+        th =t('monthly_hours')
+        - unless @mobile_mode
+          th =t('is_admin')
+          th =t('normal_workplace')
+        th =t('worked_this_month')
+        th
+
+    tbody
+      -@users.each do |user|
+        tr
+          td
+            - if user.avatar.present?
+              = image_tag user.avatar.variant(:microthumb)
+            - else
+              =t('no_avatar')
+          td = link_to user.name, admin_user_path(user)
+          - unless @mobile_mode
+            td = user.email
+          td = user.monthly_hours
+          - unless @mobile_mode
+            td = user.is_admin?
+            td = link_to user.workplace.name, admin_workplace_path(user.workplace)
+          td = minutes_to_str(worked_time_this_moth(get_or_crate_monthly_work(user)))
+          th
+            a.btn.btn-secondary.btn-sm<> href=edit_admin_user_path(user) =t('edit')
+            a.btn.btn-secondary.btn-sm<> href=admin_user_report_path(user: user) =t('report')

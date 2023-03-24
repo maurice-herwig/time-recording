@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @user] do |f|
+  = f.input :firstname, :label => t('firstname')
+  = f.input :lastname, :label => t('lastname')
+  = f.input :avatar, :label => t('avatar')
+  = f.input :monthly_hours, :label => t('monthly_hours')
+  = f.input :is_admin, :label => t('is_admin')
+  = f.association :workplace, :label => t('workplace')
+  = f.submit class: 'btn btn-success'

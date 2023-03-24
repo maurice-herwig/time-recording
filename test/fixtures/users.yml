@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+admin:
+  firstname: 'Admin'
+  lastname: 'Admin'
+  email: 'admin@admin.web.de'
+  monthly_hours: 20
+  is_admin: true
+  workplace: test_workplace
+
+normal:
+  firstname: 'Normal'
+  lastname: 'Normann'
+  email: 'normal@normal.web.de'
+  monthly_hours: 200
+  is_admin: false
+  workplace: test_workplace

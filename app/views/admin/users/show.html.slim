@@ -1,0 +1,13 @@
+turbo-frame#employee_overview
+  h3 =t('.employee', name:@user.name)
+  - unless @mobile_mode
+    - if @user.avatar.present?
+      = image_tag @user.avatar.variant(:thumb)
+    - else
+      = t('no_avatar')
+  br
+
+  a.btn.btn-secondary<> href=edit_admin_user_path(@user) =t('edit')
+  a.btn.btn-secondary<> href=admin_user_report_path(user: @user) =t('report')
+
+  turbo-frame#monthly_employee_overview src=monthly_works_path(user: @user)

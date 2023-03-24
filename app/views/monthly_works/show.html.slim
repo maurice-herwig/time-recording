@@ -1,0 +1,36 @@
+turbo-frame#month_overview
+  p = t('.worked_time', time: minutes_to_str(worked_time_this_moth(@monthly_work)))
+
+  turbo-frame#work_times_list
+    = pager :monthly_work_path
+
+
+    table.table.table-striped.table-sm
+      thead
+        tr
+          th = t('start_time')
+          - unless @mobile_mode
+            th = t('end_time')
+          th = t('duration')
+          th = t('last_comment')
+          th
+
+      tbody
+        - @work_times.each do |work_time|
+          tr
+            - if work_time.start_time.present?
+              td = l(work_time.start_time, format: :short)
+            - else
+              td = '-'
+            - unless @mobile_mode
+              - if work_time.end_time.present?
+                td = l(work_time.end_time, format: :short)
+              - else
+                td = '-'
+            td = minutes_to_str(worked_time(work_time))
+            - if work_time.comments.last.present?
+              td = comment_to_string(work_time.comments.last)
+            - else
+              td = '-'
+            th
+              a.btn.btn-secondary.btn-sm<> href=work_time_path(work_time) = t('show')

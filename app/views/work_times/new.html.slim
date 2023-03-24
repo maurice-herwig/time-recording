@@ -1,0 +1,11 @@
+turbo-frame#check_in_work_time
+  h5 =t('.header')
+  = simple_form_for [@work_time] do |f|
+    = f.input :monthly_work, :as => :hidden, :input_html => {:value => @monthly_work.id}
+    = f.association :workplace, :label => t('workplace'), :selected => @monthly_work.user.workplace.id
+    = f.label t('personal_secret') + ': '
+    br
+    = f.fields_for :personal_secret do |secret_subform|
+      = secret_subform.password_field :secret
+    br
+    = f.button :submit, t('check_in'), class: 'btn btn-success my-4'

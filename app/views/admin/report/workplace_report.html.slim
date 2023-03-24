@@ -1,0 +1,66 @@
+-if @report_type.present?
+  .my-2
+    h3 = t('.header', name:@workplace.name)
+
+    - if @report_type == Admin::ReportController::DAYS
+      p = t('month_overview', year: @year, month: @month)
+      = link_to t('back_months'), admin_workplace_report_path(year: @year, workplace: @workplace), class: 'btn btn-secondary mx-1'
+
+    - elsif @report_type == Admin::ReportController::MONTHS
+      p = t('year_overview', year: @year)
+      = link_to t('back_years'), admin_workplace_report_path(workplace: @workplace), class: 'btn btn-secondary mx-1'
+
+    = link_to t('download_as_excel'), admin_download_report_path(report: @report, report_type: @report_type, format: 'xlsx'), class: 'btn btn-secondary mx-1'
+
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th =t(@report_type)
+        th =t('.regular_workers')
+        th =t('.non_regular_workers')
+        th =t(Admin::ReportController::TOTAL)
+
+    tbody
+      - @report.keys.each do |i|
+        - unless i == Admin::ReportController::TOTAL
+          tr
+            - if @report_type == Admin::ReportController::YEARS
+              th = link_to i, admin_workplace_report_path(year: i, workplace: @workplace)
+            - elsif (@report_type == Admin::ReportController::MONTHS) && @year.present?
+              th = link_to i, admin_workplace_report_path(year: @year, month: i, workplace: @workplace)
+            - else
+              th = i
+
+            - if @report[i][Admin::ReportController::REGULAR_EMPLOYEE].present? && (@report[i][Admin::ReportController::REGULAR_EMPLOYEE] != 0)
+              td = minutes_to_str(@report[i][Admin::ReportController::REGULAR_EMPLOYEE])
+            - else
+              td = '-'
+
+            - if @report[i][Admin::ReportController::NON_REGULAR_EMPLOYEE].present? && (@report[i][Admin::ReportController::NON_REGULAR_EMPLOYEE] != 0)
+              td = minutes_to_str(@report[i][Admin::ReportController::NON_REGULAR_EMPLOYEE])
+            - else
+              td = '-'
+
+            - if @report[i][Admin::ReportController::TOTAL].present? && (@report[i][Admin::ReportController::TOTAL] != 0)
+              th = minutes_to_str(@report[i][Admin::ReportController::TOTAL])
+            - else
+              th = '-'
+      tr
+        th =t(Admin::ReportController::TOTAL)
+        - if @report[Admin::ReportController::TOTAL][Admin::ReportController::REGULAR_EMPLOYEE].present? && (@report[Admin::ReportController::TOTAL][Admin::ReportController::REGULAR_EMPLOYEE]!= 0)
+          th = minutes_to_str(@report[Admin::ReportController::TOTAL][Admin::ReportController::REGULAR_EMPLOYEE])
+        - else
+          th = '-'
+
+        - if @report[Admin::ReportController::TOTAL][Admin::ReportController::NON_REGULAR_EMPLOYEE].present? && (@report[Admin::ReportController::TOTAL][Admin::ReportController::NON_REGULAR_EMPLOYEE] != 0)
+          th = minutes_to_str(@report[Admin::ReportController::TOTAL][Admin::ReportController::NON_REGULAR_EMPLOYEE])
+        - else
+          th = '-'
+
+        - if @report[Admin::ReportController::TOTAL][Admin::ReportController::TOTAL].present? && (@report[Admin::ReportController::TOTAL][Admin::ReportController::TOTAL].present? != 0)
+          th = minutes_to_str(@report[Admin::ReportController::TOTAL][Admin::ReportController::TOTAL])
+        - else
+          th = '-'
+
+- else
+  p =t('no_report')

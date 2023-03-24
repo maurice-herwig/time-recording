@@ -1,0 +1,32 @@
+h3 =t('.header', name:@workplace.name)
+
+p #{@workplace.address}
+
+a.btn.btn-secondary.m-1<> href=edit_admin_workplace_path(@workplace) =t('edit')
+a.btn.btn-secondary.m-1<> href=admin_workplace_report_path(workplace: @workplace) = t('report')
+= button_to t('delete'), admin_workplace_path(@workplace), method: 'delete', class: 'btn btn-danger my-2 m-1'
+
+h3 =t('.employees')
+
+turbo-frame#employee_at_this_workplace_list
+  = pager :admin_workplace_path
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th =t('name')
+        - unless @mobile_mode
+          th =t('email')
+        th =t('monthly_hours')
+        th =t('worked_this_month')
+        th
+    tbody
+      - @users.each do |user|
+        tr
+          td = link_to user.name, admin_user_path(user)
+          - unless @mobile_mode
+            td = user.email
+          td = user.monthly_hours
+          td = minutes_to_str(worked_time_this_moth(get_or_crate_monthly_work(user)))
+          th
+            a.btn.btn-secondary.btn-sm<> href=edit_admin_user_path(user) = t('edit')
+            a.btn.btn-secondary.btn-sm<> href=admin_user_report_path(user: user) = t('report')

@@ -1,0 +1,11 @@
+p
+  =t('month')
+  a.btn.btn-primary.btn-sm<> href=send(path_name, month: @month_pager.month-1, year: @month_pager.year, user: @month_pager.user) class=("disabled" if (@month_pager.year == 2020 && @month_pager.month == 1)) «
+  = @month_pager.month
+  a.btn.btn-primary.btn-sm<> href=send(path_name, month: @month_pager.month+1, year: @month_pager.year, user: @month_pager.user) class=("disabled" if (@month_pager.year == Time.current.year && @month_pager.month == Time.current.month)) »
+
+p
+  =t('year')
+  a.btn.btn-primary.btn-sm<> href=send(path_name, month: @month_pager.month, year: @month_pager.year - 1, user: @month_pager.user) class=("disabled" if (@month_pager.year <= 2020)) «
+  = @month_pager.year
+  a.btn.btn-primary.btn-sm<> href=send(path_name, month: @month_pager.month, year: @month_pager.year + 1, user: @month_pager.user) class=("disabled" if (@month_pager.year >= Time.current.year)) »

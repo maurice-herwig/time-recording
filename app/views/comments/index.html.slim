@@ -1,0 +1,26 @@
+turbo-frame#comments_list
+  h3 =t('.header')
+
+  = comments_pager :comments_path
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th = t('comment')
+        th = t('comment_by')
+        th = t('comment_at')
+
+    tbody
+      - @comments.each do |comment|
+        tr
+          td = comment.comment
+          - if can? :manage, Admin
+            td = link_to comment.user.name, admin_user_path(comment.user)
+          - else
+            td = comment.user.name
+          td = l(comment.created_at,format: :short)
+
+  h3 = t('add_comment')
+  = simple_form_for Comment.new do |f|
+    = f.input :comment, :label => t('.comment')
+    = f.input :work_time, :as => :hidden, :input_html => { :value => @work_time.id }
+    = f.button :submit, t('.create_comment'), class: 'btn btn-success'

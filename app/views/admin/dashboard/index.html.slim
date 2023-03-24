@@ -1,0 +1,50 @@
+h3 =t('.header')
+
+turbo-frame#striking_working_hours
+  = pager :admin_root_path
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th =t('employee')
+        - unless @mobile_mode
+          th =t('normal_workplace')
+          th =t('workplace')
+        th =t('start_time')
+        - unless @mobile_mode
+          th =t('end_time')
+        th =t('duration')
+        th
+
+    tbody
+      -@work_times.each do |work_time|
+        tr
+          td = link_to work_time.monthly_work.user.name, admin_user_path(work_time.monthly_work.user)
+          - unless @mobile_mode
+            td = link_to work_time.monthly_work.user.workplace.name, admin_workplace_path(work_time.monthly_work.user.workplace)
+            td = link_to work_time.workplace.name, admin_workplaces_path(work_time.workplace)
+          td = l(work_time.start_time, format: :short)
+          - unless @mobile_mode
+            - if work_time.end_time.present?
+              td = l(work_time.end_time, format: :short)
+            - else
+              td = "-"
+          td = minutes_to_str(worked_time(work_time))
+          th
+            a.btn.btn-secondary.btn-sm<> href=edit_admin_work_time_path(work_time) =t('edit')
+            a.btn.btn-secondary.btn-sm<> href=work_time_path(work_time) =t('show')
+
+turbo-frame#employees_at_work
+  h3 =t('.current_employees')
+
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th =t('employee')
+        th =t('start_time')
+        th =t('duration')
+    tbody
+      -@users.each do |user|
+        tr
+          td = link_to user.name, admin_user_path(user)
+          td = l(get_or_crate_monthly_work(user).work_times.last.start_time, format: :short)
+          td = minutes_to_str(worked_time(get_or_crate_monthly_work(user).work_times.last))

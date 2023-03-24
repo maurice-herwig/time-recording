@@ -1,0 +1,137 @@
+en:
+  title: Time recording
+  workplace: Workplace
+  personal_secret: Secret
+  check_in: Start working time
+  check_out: End working time
+  employee: Employee
+  employees: Employees
+  normal_workplace: Regular workplace
+  start_time: Starting time
+  end_time: End Time
+  duration: Duration
+  edit: Edit
+  show: Show
+  create: Create
+  delete: Delete
+  hours: Hours
+  minutes: Minutes
+  month: Month
+  year: Year
+  last_comment: Last comment
+  comment: Comment
+  comment_by: Commented by
+  comment_at: Commented on
+  page: Page
+  of: of
+  name: Name
+  street_name: Street
+  street_number: House number
+  city: City
+  zip_code: Zip code
+  email: Email address
+  monthly_hours: Monthly working hours
+  worked_this_month: Hours worked this month
+  is_admin: Admin
+  firstname: Firstname
+  lastname: Lastname
+  total: Total
+  report: Report
+  no_report: There is no data available for a report.
+  year_overview: Overview for the year %{year}
+  back_years: Back to the yearly overview
+  back_months: Back to the monthly overview
+  month_overview: Overview for the month %{month} %{year}
+  days: days
+  months: months
+  years: years
+  download_as_excel: Download
+  update: Update
+  address: address
+  avatar: Avatar
+  no_avatar: No avatar
+
+  admin:
+    dashboard:
+      index:
+        header: Working hours marked as striking
+        current_employees: Employees who are currently working
+
+
+    report:
+      user_report:
+        header: Employee report for %{name}
+        monthly_hours: The employee has an agreed monthly working time of %{hours} hours.
+
+      workplace_report:
+        header: Workplace report for %{name}
+        regular_workers: Regular employees
+        non_regular_workers: not regular employees
+
+    users:
+      edit:
+        header: Edit employee
+      show:
+        employee: Employee %{name}
+
+    work_times:
+      form:
+        striking: Marked as striking
+
+    workplaces:
+      edit:
+        header: Edit a workplace
+
+      index:
+        number_employees: Number of employees
+        add_workplace: Create new workplace
+
+      new:
+        header: Create new workplace
+
+      show:
+        header: Workplace %{name}
+        employees: Employees of the workplace
+
+  application:
+    navbar_helper:
+      home: Home
+      admin: Admin
+      workplaces: Workplaces
+      logout: Logout
+      language: Language
+      german: Deutsch
+      english: English
+      mode: Mode
+      phone: Phone
+      pc: Computer
+
+  comments:
+    index:
+      header: Comments
+      add_comment: Add a new comment
+      create_comment: Create comment
+
+  home:
+    index:
+      welcome: Hello %{name}
+      thank: Thank you very much for your work!
+      beer: Enjoy your beer after work!
+      i_will_work: I'd rather work!
+
+  monthly_works:
+    index:
+      header: Working hours overview
+
+    show:
+      worked_time: Working time %{time}
+
+  work_times:
+    edit:
+      header: Please enter your personal secret to finish your work today.
+
+    new:
+      header: Please enter your current workplace and your personal secret to start your working time.
+
+    show:
+      header: Recorded working time

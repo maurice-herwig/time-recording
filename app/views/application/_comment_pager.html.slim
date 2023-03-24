@@ -1,0 +1,7 @@
+p
+  =t('page')
+  a.btn.btn-primary.btn-sm<> href=send(path_name, page: @pager.page-1, pagesize: @pager.pagesize, work_time: @work_time) class=("disabled" if @pager.page <= 1) «
+  = @pager.page
+  a.btn.btn-primary.btn-sm<> href=send(path_name, page: @pager.page+1, pagesize: @pager.pagesize, work_time: @work_time) class=('disabled' if @pager.page >= @pager.pages) »
+  =t('of')
+  =< @pager.pages

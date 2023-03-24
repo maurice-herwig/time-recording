@@ -1,0 +1,33 @@
+turbo-frame#list_of_all_workplaces
+  h3 =t('workplaces')
+  = pager :admin_workplaces_path
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th =t('name')
+        - if @mobile_mode
+          th =t('address')
+        - else
+          th =t('street_name')
+          th =t('street_number')
+          th =t('city')
+          th =t('zip_code')
+          th =t('.number_employees')
+        th
+    tbody
+      - @workplaces.each do |workplace|
+        tr
+          td = link_to workplace.name, admin_workplace_path(workplace)
+          - if @mobile_mode
+            td = workplace.address
+          - else
+            td = workplace.street_name
+            td = workplace.street_number
+            td = workplace.city
+            td = workplace.zip_code
+            td = workplace.user.length
+          th
+            a.btn.btn-secondary.btn-sm<> href=edit_admin_workplace_path(workplace) =t('edit')
+            a.btn.btn-secondary.btn-sm<> href=admin_workplace_report_path(workplace: workplace) = t('report')
+
+  = link_to t('.add_workplace'), new_admin_workplace_path, class: "btn btn-success"

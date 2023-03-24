@@ -1,0 +1,10 @@
+= simple_form_for [:admin, @work_time] do |f|
+  = f.input :start_time, :label => t('start_time')
+  = f.input :end_time, :label => t('end_time')
+  = f.input :striking, :label => t('.striking')
+  = f.association :workplace, :label => t('workplace')
+
+  = f.fields_for :comment do |comment_subform|
+    = comment_subform.input :comment_text, :label => t('comment')
+
+  = f.button :submit, t('update'), class: 'btn btn-success'

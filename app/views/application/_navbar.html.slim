@@ -1,0 +1,8 @@
+- if @mobile_mode
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-black
+    .dropdown
+      button.dropdown-toggle.btn.btn-secondary.mx-1.navbar-toggler-icon[href="#" data-bs-toggle="dropdown"]
+      .dropdown-menu
+        = render 'navbar_helper'
+- else
+  = render 'navbar_helper'

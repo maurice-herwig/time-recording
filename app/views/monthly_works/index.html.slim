@@ -1,0 +1,5 @@
+turbo-frame#monthly_employee_overview
+  h3 = t('.header')
+  = month_pager :monthly_works_path
+
+  turbo-frame#month_overview src=monthly_work_path(@monthly_work)

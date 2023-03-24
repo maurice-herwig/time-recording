@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_workplace:
+  name: 'test'
+  street_name: 'Teststraße'
+  street_number: '9a'
+  city: 'Tetshausen'
+  zip_code: 12345
+
+
+second_workplace:
+  name: 'test'
+  street_name: 'Teststraße'
+  street_number: '9a'
+  city: 'Tetshausen'
+  zip_code: 12345
+

@@ -1,0 +1,6 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+nice_comment:
+  comment: "Das ist ein Kommentar"
+  user: normal
+  work_time: hard_work

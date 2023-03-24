@@ -1,0 +1,139 @@
+de:
+  title: Zeiterfassung
+  workplace: Arbeitsplatz
+  personal_secret: Geheimnis
+  check_in: Arbeitszeit beginnen
+  check_out: Arbeiszeit beenden
+  employee: Mitarbeiter
+  employees: Mitarbeiter
+  normal_workplace: Stammarbeitsplatz
+  start_time: Anfangszeitpunkt
+  end_time: Endzeitpunkt
+  duration: Dauer
+  edit: Bearbeiten
+  show: Anzeigen
+  create: Erstellen
+  delete: Löschen
+  hours: Stunden
+  minutes: Minuten
+  month: Monat
+  year: Jahr
+  last_comment: Letzter Kommentar
+  comment: Kommentar
+  comment_by: Kommentiert von
+  comment_at: Kommentiert am
+  page: Seite
+  of: von
+  name: Name
+  street_name: Straße
+  street_number: Hausnummer
+  city: Stadt
+  zip_code: Postleitzahl
+  email: Email Adresse
+  monthly_hours: Monatliche Arbeitsstunden
+  worked_this_month: Diesen Monat geleistete Stunden
+  is_admin: Admin
+  firstname: Vorname
+  lastname: Nachname
+  total: Gesamt
+  report: Bericht
+  days: Tage
+  months: Monate
+  years: Jahre
+  download_as_excel: Herunterladen
+  update: Aktualisieren
+  address: Adresse
+  avatar: Avatar
+  no_avatar: Kein Avatar
+
+  no_report: Es liegen keine Daten für einen Report vor.
+  year_overview: Übersicht für das Jahr %{year}
+  back_years: Zurück zur Jahresübersicht
+  back_months: Zurück zur Monatsübersicht
+  month_overview: Übersicht für den Monat %{month} %{year}
+
+  admin:
+    dashboard:
+      index:
+        header: Als auffällig gekennzeichnete Arbeitszeiten
+        current_employees: Mitarbeiter die gerade arbeiten
+
+
+    report:
+      user_report:
+        header: Mitarbeiter bericht für %{name}
+        monthly_hours: Der Mitarbeiter hat eine vereinbarte monatliche Arbeitszeit von %{hours} Stunden.
+
+      workplace_report:
+        header: Arbeitsplatz bericht für %{name}
+        regular_workers: Stammarbeiter
+        non_regular_workers: Nicht Stammarbeiter
+
+
+    users:
+      edit:
+        header: Mitarbeiter bearbeiten
+      show:
+        employee: Mitarbeiter %{name}
+
+    work_times:
+      form:
+        striking: Als auffällig markiert
+
+    workplaces:
+      edit:
+        header: Bearbeite einen Arbeitsplatz
+
+      index:
+        number_employees: Anzahl der Mitarbeieter
+        add_workplace: Erstelle neuen Arbeitsplatz
+
+      new:
+        header: Erstelle einen neuen Arbeitsplatz
+
+      show:
+        header: Arbeitsplatz %{name}
+        employees: Mitarbeiter des Arbeitsplatzes
+
+  application:
+    navbar_helper:
+      home: Startseite
+      admin: Admin
+      workplaces: Arbeitsplätze
+      logout: Abmelden
+      language: Sprache
+      german: Deutsch
+      english: Englisch
+      mode: Modus
+      phone: Telefon
+      pc: Computer
+
+  comments:
+    index:
+      header: Kommentare
+      add_comment: Hinzufügen eines neuen Kommentares
+      create_comment: Kommentar erstellen
+
+  home:
+    index:
+      welcome: Hallo %{name}
+      thank: Vielen Dank für deine geleistete Arbeit!
+      beer: Genieß dein Feierabendbier!
+      i_will_work: Ich will doch lieber arbeiten!
+
+  monthly_works:
+    index:
+      header: Arbeitszeiten übersicht
+
+    show:
+      worked_time: Geleistete Arbeitszeit %{time}
+
+  work_times:
+    edit:
+      header: Bitte gib dein persönliches Geheimnis ein, um deine heutige Arbeit zu beenden.
+
+    new:
+      header: Bitte gib zu Beginn deiner Arbeitszeit deinen heutigen Arbeitsplatz und dein persönliches Geheimnis ein.
+
+    show:
+      header: Erfasste Arbeitszeit

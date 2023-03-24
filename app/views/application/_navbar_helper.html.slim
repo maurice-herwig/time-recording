@@ -1,0 +1,52 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-black
+  - unless @mobile_mode
+    - if current_user.avatar.present?
+      = image_tag current_user.avatar.variant(:microthumb)
+    - else
+      a.navbar-brand.mx-4 =t('title')
+  collapse.navbar-collapse
+    ul.navbar-nav
+      li.nav-item
+        a.nav-link[href=root_path]
+          = t('.home')
+
+  - if can? :manage, Admin
+    collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link[href=admin_root_path]
+            = t('.admin')
+        li.nav-item
+          a.nav-link[href=admin_workplaces_path]
+            = t('.workplaces')
+        li.nav-item
+          a.nav-link[href=admin_users_path]
+            = t('employees')
+  - if @mobile_mode
+    a.btn.btn-secondary[href=switch_locale_path('de')]
+      = t('.german')
+    a.btn.btn-secondary[href=switch_locale_path('en')]
+      = t('.english')
+
+    a.btn.btn-secondary[href=switch_mode_path('pc')]
+      = t('.pc')
+
+    = button_to t('.logout'), destroy_user_session_path, method: 'delete', class: 'btn btn-secondary'
+
+  - else
+    collapse.navbar-collapse
+      .dropdown
+        button.dropdown-toggle.btn.btn-secondary.mx-1[href="#" data-bs-toggle="dropdown"] =t('.language')
+        .dropdown-menu
+          a.dropdown-item[href=switch_locale_path('de')]
+            =t('.german')
+          a.dropdown-item[href=switch_locale_path('en')]
+            =t('.english')
+      .dropdown
+        button.dropdown-toggle.btn.btn-secondary.mx-1[href="#" data-bs-toggle="dropdown"] = t('.mode')
+        .dropdown-menu
+          a.dropdown-item[href=switch_mode_path('phone')]
+            = t('.phone')
+          a.dropdown-item[href=switch_mode_path('pc')]
+            = t('.pc')
+    = button_to t('.logout'), destroy_user_session_path, method: 'delete', class: 'btn btn-secondary mx-4'

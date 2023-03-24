@@ -1,0 +1,10 @@
+turbo-frame#check_out_work_time
+  h5 =t('.header')
+
+  = simple_form_for [@work_time] do |f|
+    = f.label t('personal_secret') + ': '
+    br
+    = f.fields_for :personal_secret do |secret_subform|
+      = secret_subform.password_field :secret
+    br
+    = f.button :submit, t('check_out'), class: 'btn btn-success my-4'

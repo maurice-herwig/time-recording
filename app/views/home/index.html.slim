@@ -1,0 +1,25 @@
+p = t('.welcome', name: current_user.name)
+
+turbo-frame#check_in_out_or_thank
+
+div.home
+  - if @thank
+    h3 = t('.thank')
+    p = t('.beer')
+
+    = link_to t('.i_will_work'), root_path, :class => "alert-primary", class: "btn btn-secondary"
+
+  - else
+    - if have_finished_last_work_time?(@monthly_work)
+      turbo-frame#check_in_work_time src=new_work_time_path(monthly_work: @monthly_work)
+
+    - else
+      turbo-frame#check_out_work_time src=edit_work_time_path(@monthly_work.work_times.last)
+
+turbo-frame#monthly_employee_overview src=monthly_works_path
+
+
+scss:
+  .home{
+    min-height: 200px;
+  }

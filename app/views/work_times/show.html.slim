@@ -1,0 +1,40 @@
+h3 =t('.header')
+
+table.table.table-striped.table-sm
+  thead
+    tr
+      - unless @mobile_mode
+        th = t('employee')
+        th = t('normal_workplace')
+        th = t('workplace')
+      th = t('start_time')
+      th = t('end_time')
+      th = t('duration')
+      - if can? :manage, Admin
+        th
+
+  tbody
+    tr
+      - unless @mobile_mode
+        - if can? :manage, Admin
+          td = link_to @work_time.monthly_work.user.name, admin_user_path(@work_time.monthly_work.user)
+          td = link_to @work_time.monthly_work.user.workplace.name, admin_workplace_path(@work_time.monthly_work.user.workplace)
+          td = link_to @work_time.workplace.name, admin_workplaces_path(@work_time.workplace)
+        - else
+          td = @work_time.monthly_work.user.name
+          td = @work_time.monthly_work.user.workplace.name
+          td = @work_time.workplace.name
+      -if @work_time.start_time.present?
+        td = l(@work_time.start_time, format: :short)
+      - else
+        td = '-'
+      - if @work_time.end_time.present?
+        td = l(@work_time.end_time, format: :short)
+      - else
+        td = '-'
+      td = minutes_to_str(worked_time(@work_time))
+      - if can? :manage, Admin
+        td = link_to t('edit'), edit_admin_work_time_path(@work_time), class: "a btn btn-secondary btn-sm"
+
+
+turbo-frame#comments_list src=comments_path(work_time: @work_time)

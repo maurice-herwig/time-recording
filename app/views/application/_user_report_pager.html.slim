@@ -1,0 +1,7 @@
+p
+  = t('page')
+  a.btn.btn-primary.btn-sm<> href=admin_user_report_path(page: @pager.page- 1, pagesize: @pager.pagesize, year: @year, month: @month, user: @user) class=("disabled" if @pager.page <= 1) «
+  = @pager.page
+  a.btn.btn-primary.btn-sm<> href=admin_user_report_path(page: @pager.page+ 1, pagesize: @pager.pagesize, year: @year, month: @month, user: @user) class=('disabled' if @pager.page >= @pager.pages) »
+  = t('of')
+  =< @pager.pages
